@@ -1,0 +1,80 @@
+{
+  "rasa_nlu_data": {
+    "common_examples": [
+      {
+        "text": "Hi",
+        "intent": "greet",
+        "entities": []
+      },
+      {
+        "text": "Hello",
+        "intent": "greet",
+        "entities": []
+      },
+      {
+        "text": "show me chinese restaurants",
+        "intent": "restaurant_search",
+        "entities": [
+          {
+            "start": 8,
+            "end": 15,
+            "value": "chinese",
+            "entity": "cuisine"
+          }
+        ]
+      },
+      {
+        "text": "Show me restaurants",
+        "intent": "restaurant_search",
+        "entities": []
+      },
+      {
+        "text": "Show me veg restaurants",
+        "intent": "restaurant_search",
+        "entities": [
+          {
+            "start": 8,
+            "end": 11,
+            "value": "veg",
+            "entity": "cuisine"
+          }
+        ]
+      },
+      {
+        "text": "Show me non-veg restaurants",
+        "intent": "restaurant_search",
+        "entities": [
+          {
+            "start": 8,
+            "end": 15,
+            "value": "non-veg",
+            "entity": "cuisine"
+          }
+        ]
+      },
+      {
+        "text": "Good bye",
+        "intent": "goodbye",
+        "entities": []
+      },
+      {
+        "text": "bye",
+        "intent": "goodbye",
+        "entities": []
+      },
+      {
+        "text": "Thank you",
+        "intent": "thanks",
+        "entities": []
+      },
+      {
+        "text": "Thank you so much",
+        "intent": "thanks",
+        "entities": []
+      }
+    ],
+    "regex_features": [],
+    "lookup_tables": [],
+    "entity_synonyms": []
+  }
+}

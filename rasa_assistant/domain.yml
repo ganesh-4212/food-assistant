@@ -1,0 +1,34 @@
+intents:
+- greet
+- restaurant_search
+- goodbye
+- thanks
+
+
+entities:
+- cuisine
+
+
+slots:
+  cuisine:
+    type: text
+
+
+actions:
+- utter_greet
+- utter_thanks
+- utter_goodbye
+- action_search_restaurants
+
+
+templates:
+
+  utter_greet:
+  - text: "Hi, I'm Dinku. How can i help you."
+
+  utter_goodbye:
+  - text: "Talk to you later!"
+  
+  utter_thanks:
+  - text: "My pleasure."
+  
