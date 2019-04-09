@@ -1,34 +1,106 @@
-## story_greet <!--- The name of the story. It is not mandatory, but useful for debugging. --> 
+## happy path
 * greet
- - utter_greet
- 
-## story_goodbye
-* goodbye
- - utter_goodbye
+    - utter_greet
+* food_order
+    - food_order_form
+    - form{"name": "food_order_form"}
+    - form{"name": null}
+    - utter_slots_values
+* thankyou
+    - utter_noworries
 
-## story_thanks
-* thanks
- - utter_thanks
- 
-## story_search_restaurants
-* restaurant_search
- - action_search_restaurants
- 
-
-## story_search_restaurants_veg
-* restaurant_search{"cuisine":"veg"}
- - action_search_restaurants
-
- ## story_search_restaurants_non_veg
-* restaurant_search{"cuisine":"non-veg"}
- - action_search_restaurants
- 
-## story_search_restaurants_non_complete
+## unhappy path
 * greet
- - utter_greet
-* restaurant_search{"cuisine":"non-veg"} 
- - action_search_restaurants
-* thanks
- - utter_thanks
-* goodbye
- - utter_goodbye 
+    - utter_greet
+* food_order
+    - food_order_form
+    - form{"name": "food_order_form"}
+* thankyou
+    - utter_noworries
+
+## very unhappy path
+* greet
+    - utter_greet
+* food_order
+    - food_order_form
+    - form{"name": "food_order_form"}
+* thankyou
+    - utter_noworries
+
+## stop but continue path
+* greet
+    - utter_greet
+* food_order
+    - food_order_form
+    - form{"name": "food_order_form"}
+* stop
+    - utter_ask_continue
+* affirm
+    - food_order_form
+    - form{"name": null}
+    - utter_slots_values
+* thankyou
+    - utter_noworries
+
+## stop and really stop path
+* greet
+    - utter_greet
+* food_order
+    - food_order_form
+    - form{"name": "food_order_form"}
+* stop
+    - utter_ask_continue
+* deny
+    - action_deactivate_form
+    - form{"name": null}
+
+## chitchat stop but continue path
+* food_order
+    - food_order_form
+    - form{"name": "food_order_form"}
+* stop
+    - utter_ask_continue
+* affirm
+    - food_order_form
+    - form{"name": null}
+    - utter_slots_values
+* thankyou
+    - utter_noworries
+
+## stop but continue and chitchat path
+* greet
+    - utter_greet
+* food_order
+    - food_order_form
+    - form{"name": "food_order_form"}
+* stop
+    - utter_ask_continue
+* affirm
+    - food_order_form
+* thankyou
+    - utter_noworries
+
+## chitchat stop but continue and chitchat path
+* greet
+    - utter_greet
+* food_order
+    - food_order_form
+    - form{"name": "food_order_form"}
+* stop
+    - utter_ask_continue
+* affirm
+    - food_order_form
+* thankyou
+    - utter_noworries
+
+## chitchat, stop and really stop path
+* greet
+    - utter_greet
+* food_order
+    - food_order_form
+    - form{"name": "food_order_form"}
+* stop
+    - utter_ask_continue
+* deny
+    - action_deactivate_form
+    - form{"name": null}

@@ -1,24 +1,37 @@
 intents:
 - greet
-- restaurant_search
-- goodbye
-- thanks
+- stop
+- food_order
+- thankyou
+- affirm
+- deny
 
 
 entities:
-- cuisine
+- food_item
+- quantity
 
 
 slots:
-  cuisine:
-    type: text
+  food_item:
+    type: unfeaturized
+    auto_fill: false
+  quantity:    
+    type: unfeaturized
+    auto_fill: false
 
 
 actions:
 - utter_greet
 - utter_thanks
 - utter_goodbye
-- action_search_restaurants
+- utter_submit
+- utter_ask_continue
+- utter_default
+- utter_ask_food_item
+- utter_ask_quantity
+- utter_noworries
+- utter_slots_values
 
 
 templates:
@@ -31,4 +44,27 @@ templates:
   
   utter_thanks:
   - text: "My pleasure."
+
+  utter_submit:
+  - text: "Ordered {quantity} {food_item}"
+
+  utter_slots_values:
+  - text: "Ordered {quantity} {food_item}"
+
+  utter_ask_continue:
+    - text: "do you want to continue?"
   
+  utter_default:
+    - text: "sorry, I didn't understand you, please try input something else"
+
+  utter_ask_food_item:
+    - text: "Please provide item name"
+  
+  utter_ask_quantity:
+    - text: "How much?"
+
+  utter_noworries:
+    - text: "you are welcome :)"
+  
+forms:
+  - food_order_form

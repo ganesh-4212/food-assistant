@@ -1,0 +1,55 @@
+%YAML 1.1
+---
+actions:
+- utter_ask_continue
+- utter_thanks
+- utter_default
+- utter_goodbye
+- utter_noworries
+- utter_submit
+- utter_slots_values
+- utter_ask_quantity
+- utter_greet
+- utter_ask_food_item
+entities:
+- quantity
+- food_item
+forms:
+- food_order_form
+intents:
+- greet
+- food_order
+- stop
+- thankyou
+- affirm
+- deny
+slots:
+  food_item:
+    auto_fill: false
+    type: unfeaturized
+  quantity:
+    auto_fill: false
+    type: unfeaturized
+  requested_slot:
+    type: unfeaturized
+templates:
+  utter_ask_continue:
+  - text: do you want to continue?
+  utter_ask_food_item:
+  - text: Please provide item name
+  utter_ask_quantity:
+  - text: How much?
+  utter_default:
+  - text: sorry, I didn't understand you, please try input something else
+  utter_goodbye:
+  - text: Talk to you later!
+  utter_greet:
+  - text: Hi, I'm Dinku. How can i help you.
+  utter_noworries:
+  - text: you are welcome :)
+  utter_slots_values:
+  - text: Ordered {quantity} {food_item}
+  utter_submit:
+  - text: Ordered {quantity} {food_item}
+  utter_thanks:
+  - text: My pleasure.
