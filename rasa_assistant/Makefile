@@ -31,7 +31,7 @@ train-core:
 	python3 -m rasa_core.train -d domain.yml -s data/stories.md -o models/current/dialogue -c policies.yml
 
 cmdline:
-	python3 -m rasa_core.run -d models/current/dialogue -u models/current/nlu --endpoints endpoints.yml
+	python3 -m rasa_core.run -d models/current/dialogue -u models/current/nlu --endpoints endpoints.yml --enable_api -o out.log
 	
 action-server:
 	python3 -m rasa_core_sdk.endpoint --actions actions 
