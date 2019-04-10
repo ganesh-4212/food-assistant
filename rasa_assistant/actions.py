@@ -16,16 +16,13 @@ logger = logging.getLogger(__name__)
 
 class FoodOrderForm(FormAction):
     def name(self):
+        print("Form nam emethod called")
         return "food_order_form"
 
     @staticmethod
     def required_slots(tracker):
+        print("Form required_slots method called")
         return ["food_item", "quantity"]
-
-    @staticmethod
-    def validate(self, dispatcher, tracker, domain):
-        slot_values = self.extract_other_slots(dispatcher, tracker, domain)
-        return [SlotSet(slot, value) for slot, value in slot_values.items()]
 
     def slot_mappings(self):
         # type: () -> Dict[Text: Union[Dict, List[Dict]]]
@@ -35,12 +32,14 @@ class FoodOrderForm(FormAction):
             - a whole message
             or a list of them, where a first match will be picked"""
 
+        print("Form slot_mappings method called")
+
         return {"food_item": self.from_entity(entity="food_item"),
-                "quantity": [self.from_entity(entity="quantity",
-                                              intent=["food_order"]),
+                "quantity": [self.from_entity(entity="quantity"),
                              self.from_entity(entity="number")]}
 
     def submit(self, dispatcher, tracker, domain):
+        print("Form submit method called")
         dispatcher.utter_template("utter_submit", tracker)
         return []
 

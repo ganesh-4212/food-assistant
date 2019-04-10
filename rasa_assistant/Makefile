@@ -25,7 +25,7 @@ clean:
 	rm -rf docs/_build
 
 train-nlu:
-	python3 -m rasa_nlu.train -c nlu_config.yml --data data/rasa_dataset_training.json -o models --fixed_model_name nlu --project current --verbose
+	python3 -m rasa_nlu.train -c nlu_config.yml --data data/rasa_dataset_training.json -o models --project current --fixed_model_name nlu --verbose
 
 train-core:
 	python3 -m rasa_core.train -d domain.yml -s data/stories.md -o models/current/dialogue -c policies.yml
@@ -34,10 +34,13 @@ cmdline:
 	python3 -m rasa_core.run -d models/current/dialogue -u models/current/nlu --endpoints endpoints.yml
 	
 action-server:
-	python3 -m rasa_core_sdk.endpoint --actions actions
+	python3 -m rasa_core_sdk.endpoint --actions actions 
 
 test-nlu:
-	python3 -m rasa_nlu.evaluate --data data/rasa_dataset_testing.json --model models/current/nlu/
+	python3 -m rasa_nlu.evaluate --data data/rasa_dataset_testing.json --model models/
 
 train-core-interactive:
-	python3 -m rasa_core.train interactive -d domain.yml -s data/stories.md -o models/current/dialogue -c policies.yml
+	python3 -m rasa_core.train interactive -d domain.yml -s data/stories.md -u models/current/nlu -o models/current/dialogue -c policies.yml --endpoints endpoints.yml 
+
+nlu-server:
+	python3 -m rasa_nlu.server --path models/

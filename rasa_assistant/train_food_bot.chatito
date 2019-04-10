@@ -1,5 +1,5 @@
 // Find restaurants by city
-%[food_order]('training': '100', 'testing': '100')
+%[food_order]
     ~[please?] ~[order?] @[quantity#in_plate] of @[food_item#in_plate]
     ~[please?] ~[order?] @[quantity#in_cup] of @[food_item#in_cup]
     ~[please?] ~[order?] @[quantity#in_glass] of @[food_item#in_glass]
